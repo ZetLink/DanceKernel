@@ -86,17 +86,8 @@ static int sde_backlight_device_update_status(struct backlight_device *bd)
 	c_conn = bl_get_data(bd);
 	display = (struct dsi_display *) c_conn->display;
 
-<<<<<<< HEAD
-	if(brightness && brightness < display->panel->bl_config.bl_min_level)
-		brightness = display->panel->bl_config.bl_min_level;
-
-	/* map UI brightness into driver backlight level with rounding */
-	bl_lvl = mult_frac(brightness, display->panel->bl_config.bl_max_level,
-			display->panel->bl_config.brightness_max_level);
-=======
 	if (brightness > display->panel->bl_config.brightness_max_level)
 		brightness = display->panel->bl_config.brightness_max_level;
->>>>>>> 12c10c05fff7 (techpack/display: drm/msm: fix brightness level mapping)
 
 	if (brightness) {
 		int bl_min = display->panel->bl_config.bl_min_level ? : 1;
